@@ -1,26 +1,27 @@
-l=['2378748485', '2378748486', '3378748485', '4378748486']
-d2={'switch01': 'te0/1', 'switch02': 'te0/2', 'switch03': 'te0/3', 'switch04': 'te0/4'}
-d={}
-d4={}
-# for i in range(0,len(l)):
-#     for x,y in d2.items():
-#         d3[x]=y,":",l[i]
-#
-# print(d3)
-l1=list(d2.values())
-print(l1)
-print(l)
-d2=list(d2)
-print(d2)
-for item in l1:
-    z=l1.index(item)
-    d[item]=l[z]
-
-print(d)
-for item in d2:
-    for x in d.values():
-        d3[item]=x
-print(d3)
+import re
+str="""
+switch01,te0/1,2378748485,8474857587
+switch02,te0/2,2378748486,5474857187
+switch03,te0/3,3378748485,9474857587
+switch04,te0/4,4378748486,15474857187
+"""
+sw=re.findall(r'switch\d\d',str)
+int=re.findall(r'te\d\/\d',str)
+otput_data=re.findall(r'(?<=te\d\/\d,)..........',str)
+switch={}
+x=0
+l1=[]
+for i in sw:
+    switch[i]=int[x]
+    x+=1
+print(switch)
+switch1={}
+y=0
+for j,k in switch.items():
+    switch1[j]={}
+    switch1[j][k]=otput_data[y]
+    y+=1
+print(switch1)
 
 
 
